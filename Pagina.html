@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffcdd2;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .newspaper {
+            background-color: #fffaf0;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #e0e0e0;
+        }
+        .header { border-bottom: 3px double #d81b60; text-align: center; margin-bottom: 20px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #b71c1c; text-transform: uppercase; letter-spacing: 2px; }
+        .main-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #d81b60; text-align: center; margin: 20px 0; font-style: italic; line-height: 1; }
+        .article { font-size: 0.9rem; line-height: 1.6; color: #333; text-align: justify; margin-bottom: 20px; }
+        .reasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
+        .reason-card { border: 1px solid #d81b60; padding: 10px; text-align: center; font-size: 0.8rem; background: #fff; }
+        .big-question { text-align: center; background-color: #fce4ec; padding: 20px; border: 2px dashed #d81b60; border-radius: 10px; }
+        .buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        button { padding: 12px; border: none; cursor: pointer; text-transform: uppercase; font-weight: bold; }
+        .btn-yes-1 { background-color: #d81b60; color: white; }
+        .btn-yes-2 { background-color: white; border: 2px solid #d81b60; color: #d81b60; }
+        #final-screen { display: none; text-align: center; animation: fadeIn 1s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+
+        <div id="proposal-screen">
+            <header class="header">
+                <div class="brand">Valentine Edition</div>
+                <div style="font-size: 0.7rem; text-transform: uppercase; color: #666; margin-top:5px;">14 de Febrero 2026</div>
+            </header>
+
+            <h1 class="main-title">Will you be my Valentine?</h1>
+
+            <div class="article">
+                <h3>Diario de amor...</h3>
+                <p>Después de que el mundo hiciera su magia, quedó claro algo: quiero vivir este 14 de febrero contigo. Mi corazón lo tiene claro desde hace tiempo.</p>
+            </div>
+
+            <div >
+                <h3>Fotos Juntos...</h3>
+                <p>Después de que el mundo hiciera su magia, quedó claro algo: quiero vivir este 14 de febrero contigo. Mi corazón lo tiene claro desde hace tiempo.</p>
+            </div>
+
+            <h3 style="text-align:center; color:#d81b60; font-family:'Playfair Display'">4- Razones por las que eres tú</h3>
+            <div class="reasons-grid">
+                <div class="reason-card">♥ Tienes la sonrisa más linda.</div>
+                <div class="reason-card">♥ Tus mordidas no suelen, alivian.</div>
+                <div class="reason-card">♥ Aunque digas que no me queres yo te quero.</div>
+                <div class="reason-card">♥ Tus peditos huelen a huevito.</div>
+            </div>
+
+            <div class="big-question">
+                <h2 style="font-family:'Playfair Display'; color:#b71c1c; margin:0;">¿Quieres ser mi San Valentín?</h2>
+                <div class="buttons">
+                    <button class="btn-yes-1" onclick="aceptar()">Obvio, sí</button>
+                    <button class="btn-yes-2" onclick="aceptar()">Has una voltereta hacia atras y luego gana la compa del mundo y revive un elefante</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="final-screen">
+            <h1 style="font-family: 'Playfair Display'; color: #b71c1c; margin-top:50px;">¡Confirmado!</h1>
+            <div style="font-size: 5rem; margin: 20px 0;">❤️</div>
+            <p>Gracias por decir que sí. Prepárate para un día inolvidable.</p>
+            <div style="font-size: 2rem; margin-top: 30px; font-family: 'Playfair Display';">G & N</div>
+        </div>
+
+        </div> <script>
+        function aceptar() {
+            document.getElementById('proposal-screen').style.display = 'none';
+            document.getElementById('final-screen').style.display = 'block';
+            crearConfeti();
+        }
+
+        function crearConfeti() {
+            const colors = ['#ff4081', '#ff5252', '#e040fb'];
+            for (let i = 0; i < 50; i++) {
+                const confeti = document.createElement('div');
+                confeti.style.position = 'fixed';
+                confeti.style.left = Math.random() * 100 + 'vw';
+                confeti.style.top = '-10px';
+                confeti.style.width = '10px';
+                confeti.style.height = '10px';
+                confeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confeti.style.animation = `caer ${Math.random() * 3 + 2}s linear`;
+                document.body.appendChild(confeti);
+            }
+            
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes caer { to { transform: translateY(100vh) rotate(720deg); } }`;
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html>
