@@ -3,116 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Para ti ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- ESTILOS GENERALES --- */
         body {
-            background-color: #ffcdd2;
+            background-color: #ffebee;
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            margin: 0; padding: 0; height: 100vh;
+            overflow: hidden; 
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* --- PANTALLA 1: EL SOBRE --- */
+        #pantalla-sobre {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffebee;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 30; cursor: pointer; transition: opacity 0.5s ease;
+        }
+        .sobre-animado { animation: flotar 2s infinite ease-in-out; }
+        .sobre {
+            width: 300px; height: 200px; background-color: #ef5350;
+            position: relative; border-radius: 10px;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .sobre::before {
+            content: ''; position: absolute; top: 0;
+            border-left: 150px solid transparent; border-right: 150px solid transparent;
+            border-top: 110px solid #ff867f;
+        }
+        .sobre::after {
+            content: ''; position: absolute; bottom: 0;
+            border-left: 150px solid transparent; border-right: 150px solid transparent;
+            border-bottom: 90px solid #e53935; border-radius: 0 0 10px 10px;
+        }
+        .corazon { font-size: 5rem; color: #ffeb3b; text-shadow: 0 0 10px rgba(255,0,0,0.5); z-index: 20; animation: latido 1.5s infinite; }
+        .texto-toca { margin-top: 50px; color: #b71c1c; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- PANTALLA 2: LA PREGUNTA --- */
+        #pantalla-pregunta {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            display: none; justify-content: center; align-items: center; z-index: 20;
+        }
+        .tarjeta {
+            background: white; padding: 50px; border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid #ff4081;
+            text-align: center; max-width: 90%; width: 450px;
+        }
+        .titulo-pregunta { color: #d81b60; font-size: 2.2rem; margin-bottom: 15px; font-weight: bold; line-height: 1.2; }
+        .subtitulo { color: #333; margin-bottom: 40px; font-size: 1.1rem; }
+        .botones { display: flex; justify-content: center; gap: 30px; position: relative; height: 60px; align-items: center; }
+        button { padding: 15px 40px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Poppins', sans-serif; }
+        .btn-si { background: linear-gradient(to right, #ff4081, #f50057); color: white; box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); z-index: 10; }
+        .btn-si:hover { transform: scale(1.1); }
+        .btn-no { background-color: #bdbdbd; color: white; position: relative; z-index: 10; }
+
+        /* --- PANTALLA 3: EL PERIÓDICO --- */
+        #pantalla-periodico {
+            display: none; width: 100%; height: 100vh; overflow-y: auto;
+            background-color: #fffaf0; padding: 20px; box-sizing: border-box; justify-content: center;
         }
         .newspaper {
-            background-color: #fffaf0;
-            width: 100%;
-            max-width: 500px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: 1px solid #e0e0e0;
+            background-color: #fffaf0; width: 100%; max-width: 600px; margin: 0 auto; margin-bottom: 50px; animation: aparecer 1s ease-out;
         }
-        .header { border-bottom: 3px double #d81b60; text-align: center; margin-bottom: 20px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #b71c1c; text-transform: uppercase; letter-spacing: 2px; }
-        .main-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #d81b60; text-align: center; margin: 20px 0; font-style: italic; line-height: 1; }
-        .article { font-size: 0.9rem; line-height: 1.6; color: #333; text-align: justify; margin-bottom: 20px; }
-        .reasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
-        .reason-card { border: 1px solid #d81b60; padding: 10px; text-align: center; font-size: 0.8rem; background: #fff; }
-        .big-question { text-align: center; background-color: #fce4ec; padding: 20px; border: 2px dashed #d81b60; border-radius: 10px; }
-        .buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-        button { padding: 12px; border: none; cursor: pointer; text-transform: uppercase; font-weight: bold; }
-        .btn-yes-1 { background-color: #d81b60; color: white; }
-        .btn-yes-2 { background-color: white; border: 2px solid #d81b60; color: #d81b60; }
-        #final-screen { display: none; text-align: center; animation: fadeIn 1s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .header { border-bottom: 2px solid #d81b60; text-align: center; margin-bottom: 20px; padding: 10px 0; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #b71c1c; text-transform: uppercase; }
+        .fecha { font-size: 0.8rem; text-transform: uppercase; color: #666; margin-top:5px; }
+        .main-title { font-family: 'Playfair Display', serif; font-size: 3rem; color: #d81b60; text-align: center; margin: 20px 0; font-style: italic; font-weight: bold; }
+        .article p { font-size: 1rem; line-height: 1.6; color: #333; text-align: justify; }
+
+        /* --- ESTILOS DE LA GALERÍA DE FOTOS --- */
+        .galeria {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dos columnas */
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .marco-foto {
+            background-color: white;
+            padding: 8px 8px 30px 8px; /* Borde blanco estilo Polaroid */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+        }
+
+        /* Alternamos la rotación para que se vea divertido */
+        .marco-foto:nth-child(even) { transform: rotate(3deg); margin-top: 10px; }
+        .marco-foto:nth-child(odd) { margin-top: -5px; }
+
+        .marco-foto:hover {
+            transform: scale(1.1) rotate(0deg); /* Al pasar el mouse crece y se endereza */
+            z-index: 15;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .marco-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la foto llene el cuadro sin deformarse */
+            display: block;
+            border: 1px solid #eee;
+        }
+
+        .reasons-title { text-align:center; color:#d81b60; font-family:'Playfair Display'; font-weight: bold; font-size: 1.3rem; margin: 30px 0 20px 0; }
+        .reasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .reason-card { border: 1px dashed #d81b60; padding: 15px; text-align: center; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+        .final-heart { font-size: 4rem; text-align: center; margin-top: 30px; animation: latido 1.5s infinite; color: #ff4081; }
+
+        /* ANIMACIONES */
+        @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes latido { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        @keyframes aparecer { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-    <div class="newspaper">
 
-        <div id="proposal-screen">
+    <div id="pantalla-sobre" onclick="abrirSobre()">
+        <div class="sobre-animado">
+            <div class="sobre">
+                <div class="corazon">❤️</div>
+            </div>
+        </div>
+        <div class="texto-toca">PARA TI (TOCA AQUÍ)</div>
+    </div>
+
+    <div id="pantalla-pregunta">
+        <div class="tarjeta">
+            <h1 class="titulo-pregunta">¿Quieres ser mi San Valentín? 🌹</h1>
+            <p class="subtitulo">Prometo hacerte sonreír todos los días.</p>
+            <div class="botones">
+                <button class="btn-si" onclick="aceptar()">¡SÍ! 😍</button>
+                <button id="btnNo" class="btn-no" onmouseover="moverBoton(this)" ontouchstart="moverBoton(this)">No 😢</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pantalla-periodico">
+        <div class="newspaper">
             <header class="header">
-                <div class="brand">Valentine Edition</div>
-                <div style="font-size: 0.7rem; text-transform: uppercase; color: #666; margin-top:5px;">14 de Febrero 2026</div>
+                <div class="brand">Valentine News</div>
+                <div class="fecha">Edición Especial 2026</div>
             </header>
 
-            <h1 class="main-title">Will you be my Valentine?</h1>
+            <h1 class="main-title">¡DIJO QUE SÍ!</h1>
 
             <div class="article">
                 <h3>Diario de amor...</h3>
                 <p>Después de que el mundo hiciera su magia, quedó claro algo: quiero vivir este 14 de febrero contigo. Mi corazón lo tiene claro desde hace tiempo.</p>
             </div>
 
-            <div >
-                <h3>Fotos Juntos...</h3>
-                <p><img src=""/> </p>
+            <div class="galeria">
+                
+                <div class="marco-foto">
+                    <img src="IMG-20250727-WA0012.jpg" alt="Foto 1">
+                </div>
+                
+                <div class="marco-foto">
+                    <img src="TU_FOTO_2.jpg" alt="Foto 2"> </div>
+
+                <div class="marco-foto">
+                    <img src="TU_FOTO_3.jpg" alt="Foto 3"> </div>
+
+                <div class="marco-foto">
+                    <img src="TU_FOTO_4.jpg" alt="Foto 4"> </div>
+
             </div>
 
-            <h3 style="text-align:center; color:#d81b60; font-family:'Playfair Display'">4- Razones por las que eres tú</h3>
+            <div class="article">
+                <p style="text-align: center; color: #888; font-size: 0.9rem;">Colección de momentos favoritos.</p>
+                <p style="text-align: center;">Eres mi elección perfecta para hoy y siempre.</p>
+            </div>
+
+            <div class="reasons-title">4 Razones por las que eres tú</div>
             <div class="reasons-grid">
                 <div class="reason-card">♥ Tienes la sonrisa más linda.</div>
-                <div class="reason-card">♥ Tus mordidas no suelen, alivian.</div>
-                <div class="reason-card">♥ Aunque digas que no me queres yo te quero.</div>
+                <div class="reason-card">♥ Tus mordidas no duelen, alivian.</div>
+                <div class="reason-card">♥ Aunque digas que no me quieres yo te quiero.</div>
                 <div class="reason-card">♥ Tus peditos huelen a huevito.</div>
             </div>
 
-            <div class="big-question">
-                <h2 style="font-family:'Playfair Display'; color:#b71c1c; margin:0;">¿Quieres ser mi San Valentín?</h2>
-                <div class="buttons">
-                    <button class="btn-yes-1" onclick="aceptar()">Obvio, sí</button>
-                    <button class="btn-yes-2" onclick="aceptar()">Has una voltereta hacia atras y luego gana la compa del mundo y revive un elefante</button>
-                </div>
-            </div>
+            <h2 style="text-align: center; color: #b71c1c; font-family: 'Playfair Display'; margin-top: 40px;">¡Te Amo!</h2>
+            <div class="final-heart">❤️</div>
         </div>
+    </div>
 
-        <div id="final-screen">
-            <h1 style="font-family: 'Playfair Display'; color: #b71c1c; margin-top:50px;">¡Confirmado!</h1>
-            <div style="font-size: 5rem; margin: 20px 0;">❤️</div>
-            <p>Gracias por decir que sí. Prepárate para un día inolvidable.</p>
-            <div style="font-size: 2rem; margin-top: 30px; font-family: 'Playfair Display';">G & N</div>
-        </div>
+    <script>
+        function abrirSobre() {
+            document.getElementById('pantalla-sobre').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('pantalla-sobre').style.display = 'none';
+                document.getElementById('pantalla-pregunta').style.display = 'flex'; 
+            }, 500);
+        }
 
-        </div> <script>
         function aceptar() {
-            document.getElementById('proposal-screen').style.display = 'none';
-            document.getElementById('final-screen').style.display = 'block';
+            document.getElementById('pantalla-pregunta').style.display = 'none';
+            document.getElementById('pantalla-periodico').style.display = 'flex';
             crearConfeti();
         }
 
+        function moverBoton(boton) {
+            boton.style.position = 'fixed'; 
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            boton.style.left = x + 'px';
+            boton.style.top = y + 'px';
+        }
+
         function crearConfeti() {
-            const colors = ['#ff4081', '#ff5252', '#e040fb'];
+            const colors = ['#ff4081', '#ff1744', '#d500f9', '#651fff'];
             for (let i = 0; i < 50; i++) {
                 const confeti = document.createElement('div');
                 confeti.style.position = 'fixed';
                 confeti.style.left = Math.random() * 100 + 'vw';
                 confeti.style.top = '-10px';
-                confeti.style.width = '10px';
-                confeti.style.height = '10px';
+                confeti.style.width = Math.random() * 10 + 5 + 'px';
+                confeti.style.height = Math.random() * 10 + 5 + 'px';
                 confeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confeti.style.animation = `caer ${Math.random() * 3 + 2}s linear`;
                 document.body.appendChild(confeti);
             }
-            
             const style = document.createElement('style');
             style.innerHTML = `@keyframes caer { to { transform: translateY(100vh) rotate(720deg); } }`;
             document.head.appendChild(style);
         }
     </script>
 </body>
-
 </html>
-
-
-
