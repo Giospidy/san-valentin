@@ -10,10 +10,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Color de fondo del video */
+    /* Color de fondo */
     background-color: #F5E8DC; 
     font-family: 'Nunito', sans-serif;
-    overflow: hidden; /* Evita barras de desplazamiento si los corazones se salen un poco */
+    overflow: hidden; 
 }
 
 .main-container {
@@ -22,7 +22,6 @@ body {
     height: 600px;
     display: flex;
     position: relative;
-    /* Opcional: un borde sutil para enmarcarlo como en el video */
     border: 1px solid #d4c5b9;
     background-color: #F5E8DC;
     border-radius: 15px;
@@ -36,14 +35,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #5C4033; /* Color marrón del texto del video */
-    opacity: 0; /* Empieza invisible */
+    color: #5C4033; 
+    opacity: 0; 
     transform: translateX(-20px);
     transition: opacity 2s ease-out, transform 2s ease-out;
     z-index: 10;
 }
 
-/* Clase para activar la aparición del texto */
 .text-section.visible {
     opacity: 1;
     transform: translateX(0);
@@ -51,14 +49,14 @@ body {
 
 .text-section h2 {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2.2rem; /* Letra un poco más chica para que quepa */
+    margin-bottom: 15px;
 }
 
 .love-message {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
 }
 
 .timer-container p {
@@ -67,16 +65,16 @@ body {
 }
 
 .timer-digits {
-    font-family: monospace; /* Fuente tipo código para los números */
-    font-size: 1.3rem;
+    font-family: monospace; 
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #8b0000; /* Un rojo oscuro para los números */
+    color: #8b0000; 
 }
 
 .signature {
-    margin-top: 40px;
+    margin-top: 30px;
     font-family: 'Dancing Script', cursive;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 /* --- Sección del Árbol (Derecha) --- */
@@ -85,87 +83,123 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Alinear el árbol al fondo */
+    align-items: flex-end; 
 }
 
+/* --- AQUÍ ESTÁN LOS CAMBIOS DE TAMAÑO --- */
 .tree-container {
     position: relative;
-    width: 400px;
-    height: 500px;
+    width: 280px;  /* Antes era 400px */
+    height: 350px; /* Antes era 500px */
 }
 
-/* El tronco simple */
+/* El tronco más pequeño */
 .trunk {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 15px;
-    height: 150px;
-    background-color: #5b8a5f; /* Color verde del tronco en el video */
+    width: 12px;     
+    height: 100px;   /* Tronco más corto */
+    background-color: #5b8a5f; 
     border-radius: 5px;
 }
 
+/* Área de hojas más pequeña */
 .leaves-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 350px; /* Área donde aparecerán las hojas */
-    /* border: 1px dotted red;  Activa esto para ver el área de las hojas */
+    height: 260px; /* Área reducida */
 }
 
-/* --- Creando el Corazón con CSS puro --- */
+/* --- Corazones --- */
 .heart {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red; /* Color base, será sobreescrito por JS */
-    transform: rotate(45deg) scale(0); /* Empieza rotado y tamaño 0 */
+    width: 15px; /* Corazón más chico (antes 20) */
+    height: 15px;
+    background-color: red; 
+    transform: rotate(45deg) scale(0);
     animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     opacity: 0.9;
 }
 
-/* Los dos círculos superiores del corazón */
 .heart::before,
 .heart::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: inherit; /* Hereda el color del padre */
+    width: 15px;
+    height: 15px;
+    background-color: inherit; 
     border-radius: 50%;
 }
 
 .heart::before {
-    top: -10px;
+    top: -8px; 
     left: 0;
 }
 
 .heart::after {
-    left: -10px;
+    left: -8px; 
     top: 0;
 }
 
-/* Animación de aparición (pop-in) */
 @keyframes popIn {
     to {
         transform: rotate(45deg) scale(1);
     }
 }
 
+/* --- ESTILOS DEL BOTÓN SIGUIENTE (Que faltaban) --- */
+.next-button-container {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+.btn-siguiente {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff748c; 
+    color: white;
+    text-decoration: none; 
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    border-radius: 50px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 2px solid white;
+    font-size: 0.9rem;
+}
+
+.btn-siguiente:hover {
+    background-color: #ff4081; 
+    transform: scale(1.1); 
+    cursor: pointer;
+}
+
 /* Responsivo para móviles */
 @media (max-width: 768px) {
     .main-container {
-        flex-direction: column-reverse; /* Árbol arriba, texto abajo en móvil */
+        flex-direction: column-reverse; 
         height: auto;
-        padding: 10px;
+        padding: 15px;
+        justify-content: center; 
     }
+    
+    /* Importante: Reducir altura del contenedor en celular */
     .tree-section {
-        height: 400px;
+        height: 280px; 
+        margin-bottom: 20px;
     }
+    
     .text-section {
-        padding: 20px;
+        padding: 10px;
         text-align: center;
+    }
+    
+    .tree-container {
+        transform: scale(0.9); 
+        transform-origin: bottom center;
     }
 }
