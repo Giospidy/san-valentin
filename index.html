@@ -68,7 +68,8 @@
         }
         .newspaper {
             background-color: #fffaf0; width: 100%; max-width: 600px; margin: 0 auto; margin-bottom: 50px; animation: aparecer 1s ease-out;
-            padding-bottom: 40px; /* Espacio extra abajo */
+            /* AQUÍ ESTÁ EL TRUCO: MÁS ESPACIO ABAJO */
+            padding-bottom: 120px; 
         }
         .header { border-bottom: 2px solid #d81b60; text-align: center; margin-bottom: 20px; padding: 10px 0; }
         .brand { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #b71c1c; text-transform: uppercase; }
@@ -117,26 +118,33 @@
 
         /* --- ESTILO DEL BOTÓN FINAL EXTRA --- */
         .contenedor-boton-final {
-            text-align: center;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 20px 0;
         }
+        
         .btn-ultimo {
-            background-color: #d32f2f; /* Un rojo más serio pero romántico */
+            background-color: #d32f2f; 
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 1rem;
+            padding: 15px 30px; /* Botón más grande */
+            border-radius: 50px;
+            font-size: 1.2rem; /* Letra más grande */
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 3px solid white;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            animation: latido 2s infinite; /* El botón late para que se vea */
         }
         .btn-ultimo:hover {
             background-color: #b71c1c;
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         /* ANIMACIONES */
@@ -215,7 +223,7 @@
                 <div class="reason-card">♥ Tus palabras, cartas, detalles y regalos son una obra de arte asi como tu lo eres.</div>
             </div>
 
-            <h2 style="text-align: center; color: #b71c1c; font-family: 'Playfair Display'; margin-top: 40px;">¡Te adoro mucho y te deseo lo mejor mi pocchaquita!</h2>
+            <h2 style="text-align: center; color: #b71c1c; font-family: 'Playfair Display'; margin-top: 40px;">¡Te quiero mucho!</h2>
             <div class="final-heart">❤️</div>
 
             <div class="contenedor-boton-final">
@@ -250,7 +258,6 @@
 
         // --- FUNCIÓN DEL NUEVO BOTÓN ---
         function accionFinal() {
-            // Aquí la redirige al archivo del ramo. 
             // Asegúrate que el archivo del arbol se llame 'index.html'
             window.location.href = "index.html"; 
         }
