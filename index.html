@@ -131,6 +131,8 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border: 2px solid white;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
         }
         .btn-ultimo:hover {
             background-color: #b71c1c;
@@ -248,10 +250,9 @@
 
         // --- FUNCIÓN DEL NUEVO BOTÓN ---
         function accionFinal() {
-            alert("¡Yo también te amo infinitamente! ❤️");
-            // Si prefieres que vaya a WhatsApp, borra la linea de arriba 'alert' 
-            // y quita las dos barras // de la linea de abajo, cambiando el numero:
-            // window.location.href = "https://wa.me/521XXXXXXXXXX?text=Aun%20te%20amo%20tontito";
+            // Aquí la redirige al archivo del ramo. 
+            // Asegúrate que el archivo del arbol se llame 'index.html'
+            window.location.href = "index.html"; 
         }
 
         function crearConfeti() {
@@ -274,8 +275,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
