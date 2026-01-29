@@ -1,0 +1,171 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Color de fondo del video */
+    background-color: #F5E8DC; 
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden; /* Evita barras de desplazamiento si los corazones se salen un poco */
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;
+    display: flex;
+    position: relative;
+    /* Opcional: un borde sutil para enmarcarlo como en el video */
+    border: 1px solid #d4c5b9;
+    background-color: #F5E8DC;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* --- Sección de Texto (Izquierda) --- */
+.text-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #5C4033; /* Color marrón del texto del video */
+    opacity: 0; /* Empieza invisible */
+    transform: translateX(-20px);
+    transition: opacity 2s ease-out, transform 2s ease-out;
+    z-index: 10;
+}
+
+/* Clase para activar la aparición del texto */
+.text-section.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.text-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.love-message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.timer-container p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.timer-digits {
+    font-family: monospace; /* Fuente tipo código para los números */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #8b0000; /* Un rojo oscuro para los números */
+}
+
+.signature {
+    margin-top: 40px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+}
+
+/* --- Sección del Árbol (Derecha) --- */
+.tree-section {
+    flex: 1.2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinear el árbol al fondo */
+}
+
+.tree-container {
+    position: relative;
+    width: 400px;
+    height: 500px;
+}
+
+/* El tronco simple */
+.trunk {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 150px;
+    background-color: #5b8a5f; /* Color verde del tronco en el video */
+    border-radius: 5px;
+}
+
+.leaves-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px; /* Área donde aparecerán las hojas */
+    /* border: 1px dotted red;  Activa esto para ver el área de las hojas */
+}
+
+/* --- Creando el Corazón con CSS puro --- */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red; /* Color base, será sobreescrito por JS */
+    transform: rotate(45deg) scale(0); /* Empieza rotado y tamaño 0 */
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0.9;
+}
+
+/* Los dos círculos superiores del corazón */
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: inherit; /* Hereda el color del padre */
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+/* Animación de aparición (pop-in) */
+@keyframes popIn {
+    to {
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column-reverse; /* Árbol arriba, texto abajo en móvil */
+        height: auto;
+        padding: 10px;
+    }
+    .tree-section {
+        height: 400px;
+    }
+    .text-section {
+        padding: 20px;
+        text-align: center;
+    }
+}
