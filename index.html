@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para ti ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Para Melany ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         /* --- ESTILOS GENERALES --- */
         body {
-            background-color: #ffebee;
+            background-color: #f3e5f5; /* Tono lavanda suave */
             font-family: 'Poppins', sans-serif;
             margin: 0; padding: 0; height: 100vh;
             overflow: hidden; 
@@ -19,13 +19,13 @@
         /* --- PANTALLA 1: EL SOBRE --- */
         #pantalla-sobre {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #ffebee;
+            background-color: #f3e5f5;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 30; cursor: pointer; transition: opacity 0.5s ease;
         }
         .sobre-animado { animation: flotar 2s infinite ease-in-out; }
         .sobre {
-            width: 300px; height: 200px; background-color: #ef5350;
+            width: 300px; height: 200px; background-color: #ba68c8;
             position: relative; border-radius: 10px;
             display: flex; justify-content: center; align-items: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -33,15 +33,15 @@
         .sobre::before {
             content: ''; position: absolute; top: 0;
             border-left: 150px solid transparent; border-right: 150px solid transparent;
-            border-top: 110px solid #ff867f;
+            border-top: 110px solid #ce93d8;
         }
         .sobre::after {
             content: ''; position: absolute; bottom: 0;
             border-left: 150px solid transparent; border-right: 150px solid transparent;
-            border-bottom: 90px solid #e53935; border-radius: 0 0 10px 10px;
+            border-bottom: 90px solid #ab47bc; border-radius: 0 0 10px 10px;
         }
-        .corazon { font-size: 5rem; color: #ffeb3b; text-shadow: 0 0 10px rgba(255,0,0,0.5); z-index: 20; animation: latido 1.5s infinite; }
-        .texto-toca { margin-top: 50px; color: #b71c1c; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+        .corazon { font-size: 5rem; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); z-index: 20; animation: latido 1.5s infinite; }
+        .texto-toca { margin-top: 50px; color: #4a148c; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; text-align: center; }
 
         /* --- PANTALLA 2: LA PREGUNTA --- */
         #pantalla-pregunta {
@@ -50,107 +50,65 @@
         }
         .tarjeta {
             background: white; padding: 50px; border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid #ff4081;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid #8e24aa;
             text-align: center; max-width: 90%; width: 450px;
         }
-        .titulo-pregunta { color: #d81b60; font-size: 2.2rem; margin-bottom: 15px; font-weight: bold; line-height: 1.2; }
-        .subtitulo { color: #333; margin-bottom: 40px; font-size: 1.1rem; }
+        .titulo-pregunta { color: #6a1b9a; font-size: 2.2rem; margin-bottom: 15px; font-weight: bold; line-height: 1.2; }
+        .subtitulo { color: #555; margin-bottom: 40px; font-size: 1.1rem; }
         .botones { display: flex; justify-content: center; gap: 30px; position: relative; height: 60px; align-items: center; }
-        button { padding: 15px 40px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Poppins', sans-serif; }
-        .btn-si { background: linear-gradient(to right, #ff4081, #f50057); color: white; box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); z-index: 10; }
+        button { padding: 15px 30px; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Poppins', sans-serif; }
+        .btn-si { background: linear-gradient(to right, #9c27b0, #7b1fa2); color: white; box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4); z-index: 10; }
         .btn-si:hover { transform: scale(1.1); }
         .btn-no { background-color: #bdbdbd; color: white; position: relative; z-index: 10; }
 
         /* --- PANTALLA 3: EL PERIÓDICO --- */
         #pantalla-periodico {
             display: none; width: 100%; height: 100vh; overflow-y: auto;
-            background-color: #fffaf0; padding: 20px; box-sizing: border-box; justify-content: center;
+            background-color: #fafafa; padding: 20px; box-sizing: border-box; justify-content: center;
         }
         .newspaper {
-            background-color: #fffaf0; width: 100%; max-width: 600px; margin: 0 auto; margin-bottom: 50px; animation: aparecer 1s ease-out;
-            /* AQUÍ ESTÁ EL TRUCO: MÁS ESPACIO ABAJO */
+            background-color: #fff; width: 100%; max-width: 650px; margin: 0 auto; margin-bottom: 50px; 
+            animation: aparecer 1s ease-out; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             padding-bottom: 120px; 
         }
-        .header { border-bottom: 2px solid #d81b60; text-align: center; margin-bottom: 20px; padding: 10px 0; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #b71c1c; text-transform: uppercase; }
-        .fecha { font-size: 0.8rem; text-transform: uppercase; color: #666; margin-top:5px; }
-        .main-title { font-family: 'Playfair Display', serif; font-size: 3rem; color: #d81b60; text-align: center; margin: 20px 0; font-style: italic; font-weight: bold; }
-        .article p { font-size: 1rem; line-height: 1.6; color: #333; text-align: justify; }
+        .header { border-bottom: 2px solid #8e24aa; text-align: center; margin-bottom: 20px; padding: 10px 0; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #4a148c; text-transform: uppercase; }
+        .fecha { font-size: 0.8rem; text-transform: uppercase; color: #888; margin-top:5px; letter-spacing: 1px; }
+        .main-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #6a1b9a; text-align: center; margin: 20px 0; font-weight: bold; }
+        .article p { font-size: 1.05rem; line-height: 1.7; color: #444; text-align: justify; }
 
         /* --- ESTILOS DE LA GALERÍA DE FOTOS --- */
         .galeria {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas */
-            gap: 15px;
-            margin: 30px 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0;
         }
-
         .marco-foto {
-            background-color: white;
-            padding: 8px 8px 30px 8px; /* Borde blanco estilo Polaroid */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transform: rotate(-3deg);
-            transition: transform 0.3s;
+            background-color: white; padding: 8px 8px 30px 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;
         }
+        .marco-foto:nth-child(even) { transform: rotate(2deg); margin-top: 10px; }
+        .marco-foto:nth-child(odd) { transform: rotate(-2deg); margin-top: -5px; }
+        .marco-foto:hover { transform: scale(1.05) rotate(0deg); z-index: 15; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .marco-foto img { width: 100%; height: 200px; object-fit: cover; display: block; border: 1px solid #eee; }
 
-        /* Alternamos la rotación para que se vea divertido */
-        .marco-foto:nth-child(even) { transform: rotate(3deg); margin-top: 10px; }
-        .marco-foto:nth-child(odd) { margin-top: -5px; }
-
-        .marco-foto:hover {
-            transform: scale(1.1) rotate(0deg); /* Al pasar el mouse crece y se endereza */
-            z-index: 15;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .marco-foto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Asegura que la foto llene el cuadro sin deformarse */
-            display: block;
-            border: 1px solid #eee;
-        }
-
-        .reasons-title { text-align:center; color:#d81b60; font-family:'Playfair Display'; font-weight: bold; font-size: 1.3rem; margin: 30px 0 20px 0; }
+        .reasons-title { text-align:center; color:#6a1b9a; font-family:'Playfair Display'; font-weight: bold; font-size: 1.5rem; margin: 40px 0 20px 0; }
         .reasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .reason-card { border: 1px dashed #d81b60; padding: 15px; text-align: center; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; justify-content: center; }
-        .final-heart { font-size: 4rem; text-align: center; margin-top: 30px; animation: latido 1.5s infinite; color: #ff4081; }
-
-        /* --- ESTILO DEL BOTÓN FINAL EXTRA --- */
-        .contenedor-boton-final {
-            display: flex; 
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            padding: 20px 0;
-        }
+        .reason-card { border: 1px solid #ce93d8; background-color: #f3e5f5; border-radius: 10px; padding: 15px; text-align: center; font-size: 0.95rem; font-weight: 500; color: #4a148c; display: flex; align-items: center; justify-content: center; }
+        .firma { text-align: right; margin-top: 40px; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #4a148c; font-style: italic; }
         
+        /* --- BOTÓN FINAL --- */
+        .contenedor-boton-final { display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 50px; margin-bottom: 20px; }
         .btn-ultimo {
-            background-color: #d32f2f; 
-            color: white;
-            padding: 15px 30px; /* Botón más grande */
-            border-radius: 50px;
-            font-size: 1.2rem; /* Letra más grande */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 3px solid white;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: bold;
-            animation: latido 2s infinite; /* El botón late para que se vea */
+            background-color: #8e24aa; color: white; padding: 15px 30px; border-radius: 50px;
+            font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(142, 36, 170, 0.4);
+            border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: bold;
+            animation: latido 2s infinite;
         }
-        .btn-ultimo:hover {
-            background-color: #b71c1c;
-            transform: scale(1.1);
-        }
+        .btn-ultimo:hover { background-color: #6a1b9a; transform: scale(1.05); }
 
         /* ANIMACIONES */
-        @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        @keyframes latido { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-        @keyframes aparecer { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes latido { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes aparecer { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -158,20 +116,19 @@
     <div id="pantalla-sobre" onclick="abrirSobre()">
         <div class="sobre-animado">
             <div class="sobre">
-                <div class="corazon">❤️</div>
+                <div class="corazon">✨</div>
             </div>
         </div>
-        <div class="texto-toca">PARA TI (TE ADORARE TODA LA VIDA)</div>
+        <div class="texto-toca">PARA MELANY<br><span style="font-size: 0.8rem; font-weight: normal;">(Toca para abrir)</span></div>
     </div>
 
     <div id="pantalla-pregunta">
         <div class="tarjeta">
-            <h1 class="titulo-pregunta">¿Quieres ser mi lirio para mi delirio? 💐</h1>
-
-            <p class="subtitulo">Prometo hacerte ver lo especial y maravillosa que eres.</p>
+            <h1 class="titulo-pregunta">¿Me dejas ayudarte y sacarte una sonrisa? 🌟</h1>
+            <p class="subtitulo">Prometo estar ahí para apoyarte en lo que necesites (y la verdad, porque me gustas mucho).</p>
             <div class="botones">
-                <button class="btn-si" onclick="aceptar()">SÍ es mas compromiso que que😍</button>
-                <button id="btnNo" class="btn-no" onmouseover="moverBoton(this)" ontouchstart="moverBoton(this)">No hueles a caca y eres gay</button>
+                <button class="btn-si" onclick="aceptar()">SÍ, obvio 😊</button>
+                <button id="btnNo" class="btn-no" onmouseover="moverBoton(this)" ontouchstart="moverBoton(this)">No, paso</button>
             </div>
         </div>
     </div>
@@ -179,57 +136,40 @@
     <div id="pantalla-periodico">
         <div class="newspaper">
             <header class="header">
-                <div class="brand">Valentine News</div>
-                <div class="fecha">Edición Especial y Unica vez solo para ti 2026</div>
+                <div class="brand">Melany News</div>
+                <div class="fecha">Edición Exclusiva para la chica más especial</div>
             </header>
 
-            <h1 class="main-title">SOLO TU Y NADIE MAS</h1>
+            <h1 class="main-title">UNA PERSONA INCREÍBLE</h1>
 
             <div class="article">
-                <h3>Diario de amor...</h3>
-                <p>Se que siempre he llegado a ser el mas empalagoso, molesto y fastidioso y eso me alegraba por la reacciones que tenias, por ver como alguien realmente se preocupaba por mi
-                    eres la flor de mi vida, las flores tienen espinas,como cualquier flor pero yo quiero ser aquel que las tome con la mano por que no me importa sangrar y nunca las soltare, por que te amo, adoro cuando haces tus dramas,
-                    no me molesta, solo me hace verte mas linda y eso me encanta que seas tu misma y expreces lo que sientes.</p>
+                <p>Sé que a veces las cosas se pueden poner difíciles, pero quería hacer algo diferente y original (aprovechando mis dotes en desarrollo de aplicaciones) para recordarte que no estás sola. Admiro muchísimo tu fuerza y me encanta tu forma de ser.</p>
+                <p>Quiero ser esa persona que te escuche, que te apoye y que te recuerde todos los días lo genial que eres.</p>
             </div>
 
             <div class="galeria">
-                
-                <div class="marco-foto">
-                    <img src="IMG-20250727-WA0012.jpg" alt="Foto 1">
-                </div>
-                
-                <div class="marco-foto">
-                    <img src="DSC01277.JPG" alt="Foto 2"> </div>
-
-                <div class="marco-foto">
-                    <img src="DSC01189.JPG" alt="Foto 3"> </div>
-
-                <div class="marco-foto">
-                    <img src="DSC01312.JPG" alt="Foto 4"> </div>
-
+                <!-- SUGERENCIA: Aquí puedes poner fotos de ella, de ustedes o un atardecer que hayas tomado -->
+                <div class="marco-foto"><img src="foto1.jpg" alt="Momento 1"></div>
+                <div class="marco-foto"><img src="foto2.jpg" alt="Momento 2"></div>
+                <div class="marco-foto"><img src="foto3.jpg" alt="Momento 3"></div>
+                <div class="marco-foto"><img src="foto4.jpg" alt="Momento 4"></div>
             </div>
 
-            <div class="article">
-                <p style="text-align: center; color: #888; font-size: 0.9rem;">Algunos momentos que adorare para el resto de mi vida.</p>
-                <p style="text-align: center;">Desde que mire tus ojos note que ya no necesitaba buscar mas, cuando mire tu rostro note que lo que siempre busque ya habia llegado,
-                    al escuchar tu voz supe que seria la unica que dejaria que me dijiera amor por ultima vez y cuando mire como eres realmente supe que eres todo lo que quiero.</p>
-            </div>
-
-            <div class="reasons-title">4 Razones por las que eres tú</div>
+            <div class="reasons-title">4 Cosas que me encantan de ti</div>
             <div class="reasons-grid">
-                <div class="reason-card">♥ Eres especialmente la mas bella, aunque tu no lo creas .</div>
-                <div class="reason-card">♥ Tus mordidas no duelen, alivian y me hacen sentir especial.</div>
-                <div class="reason-card">♥ El que pelemos no significa que te dejare de amar.</div>
-                <div class="reason-card">♥ Tus palabras, cartas, detalles y regalos son una obra de arte asi como tu lo eres.</div>
+                <div class="reason-card">Eres increíblemente fuerte e inteligente.</div>
+                <div class="reason-card">Tienes una vibra que simplemente contagia cosas buenas.</div>
+                <div class="reason-card">Me encanta poder ser quien te ayude cuando lo necesites.</div>
+                <div class="reason-card">Simplemente, tú como persona me fascinas.</div>
             </div>
 
-            <h2 style="text-align: center; color: #b71c1c; font-family: 'Playfair Display'; margin-top: 40px;">¡Te quiero mucho!</h2>
-            <div class="final-heart">❤️</div>
+            <div class="firma">
+                Con mucho cariño,<br>Gio (Vani) ✨
+            </div>
 
             <div class="contenedor-boton-final">
-                <button class="btn-ultimo" onclick="accionFinal()">si aun sientes algo por mi clikea aqui</button>
+                <button class="btn-ultimo" onclick="accionFinal()">Haz clic aquí para tu sorpresa</button>
             </div>
-
         </div>
     </div>
 
@@ -256,23 +196,22 @@
             boton.style.top = y + 'px';
         }
 
-        // --- FUNCIÓN DEL NUEVO BOTÓN ---
         function accionFinal() {
-            // Asegúrate que el archivo del arbol se llame 'index.html'
             window.location.href = "Sorpresa.html"; 
         }
 
         function crearConfeti() {
-            const colors = ['#ff4081', '#ff1744', '#d500f9', '#651fff'];
-            for (let i = 0; i < 50; i++) {
+            const colors = ['#ce93d8', '#ab47bc', '#8e24aa', '#ba68c8'];
+            for (let i = 0; i < 60; i++) {
                 const confeti = document.createElement('div');
                 confeti.style.position = 'fixed';
                 confeti.style.left = Math.random() * 100 + 'vw';
                 confeti.style.top = '-10px';
-                confeti.style.width = Math.random() * 10 + 5 + 'px';
-                confeti.style.height = Math.random() * 10 + 5 + 'px';
+                confeti.style.width = Math.random() * 8 + 6 + 'px';
+                confeti.style.height = Math.random() * 8 + 6 + 'px';
                 confeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confeti.style.animation = `caer ${Math.random() * 3 + 2}s linear`;
+                confeti.style.borderRadius = "50%";
                 document.body.appendChild(confeti);
             }
             const style = document.createElement('style');
@@ -281,6 +220,4 @@
         }
     </script>
 </body>
-
 </html>
-
