@@ -3,9 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para las personas especiales de mi vida</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <title>Para las personas especiales de mi vida ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f3e5f5;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .main-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 820px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(106, 27, 154, 0.15);
+            border: 3px solid #ce93d8;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+        }
+
+        .text-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #4a148c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .love-message {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* --- CONTENEDOR DEL CONTADOR --- */
+        .timer-container {
+            background: #faf5fc;
+            border: 2px solid #e1bee7;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .date-selector {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .date-selector label {
+            font-size: 0.85rem;
+            color: #6a1b9a;
+            font-weight: 600;
+        }
+
+        .date-selector input[type="date"] {
+            padding: 6px 12px;
+            border: 1.5px solid #ce93d8;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            color: #4a148c;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .date-selector input[type="date"]:focus {
+            border-color: #8e24aa;
+            box-shadow: 0 0 6px rgba(142, 36, 170, 0.3);
+        }
+
+        .timer-container p {
+            font-size: 0.9rem;
+            color: #7b1fa2;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timer-digits {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        .timer-digits span {
+            color: #8e24aa;
+            font-weight: 700;
+            background: #fff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid #ce93d8;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #4a148c;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        /* --- CONTENEDOR DEL ÁRBOL --- */
+        .tree-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 280px;
+        }
+
+        .tree-container {
+            position: relative;
+            width: 200px;
+            height: 250px;
+        }
+
+        .trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 100px;
+            background: linear-gradient(to right, #5c3a21, #795548);
+            border-radius: 6px;
+        }
+
+        .leaves-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 160px;
+        }
+
+        .heart-leaf {
+            position: absolute;
+            font-size: 16px;
+            user-select: none;
+            animation: pulseLeaf 2.5s infinite ease-in-out alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseLeaf {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.15) rotate(6deg); }
+        }
+    </style>
 </head>
 <body>
 
@@ -18,12 +198,17 @@
             </p>
 
             <div class="timer-container">
+                <div class="date-selector">
+                    <label for="dateInput">¿Desde qué fecha nos conocemos?</label>
+                    <input type="date" id="dateInput">
+                </div>
+
                 <p>Compartiendo este camino juntos desde hace...</p>
                 <div class="timer-digits">
-                    <span id="days">000</span> días 
-                    <span id="hours">00</span> horas 
-                    <span id="minutes">00</span> minutos 
-                    <span id="seconds">00</span> segundos
+                    <div><span id="days">000</span> días</div>
+                    <div><span id="hours">00</span> horas</div>
+                    <div><span id="minutes">00</span> min</div>
+                    <div><span id="seconds">00</span> seg</div>
                 </div>
             </div>
 
@@ -40,6 +225,75 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Lógica del contador
+        const dateInput = document.getElementById('dateInput');
+        const daysSpan = document.getElementById('days');
+        const hoursSpan = document.getElementById('hours');
+        const minutesSpan = document.getElementById('minutes');
+        const secondsSpan = document.getElementById('seconds');
+
+        // Fecha de inicio inicial
+        const defaultDate = "2024-01-01";
+        dateInput.value = defaultDate;
+        let startDate = new Date(defaultDate + "T00:00:00");
+
+        dateInput.addEventListener('change', (e) => {
+            if (e.target.value) {
+                startDate = new Date(e.target.value + "T00:00:00");
+                updateCounter();
+            }
+        });
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            if (diff < 0) {
+                daysSpan.textContent = "000";
+                hoursSpan.textContent = "00";
+                minutesSpan.textContent = "00";
+                secondsSpan.textContent = "00";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            daysSpan.textContent = String(days).padStart(3, '0');
+            hoursSpan.textContent = String(hours).padStart(2, '0');
+            minutesSpan.textContent = String(minutes).padStart(2, '0');
+            secondsSpan.textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Generar hojas moradas y brillantes en el árbol
+        function renderTree() {
+            const container = document.getElementById('leavesContainer');
+            const icons = ['💜', '✨', '🌸', '💖'];
+            const totalLeaves = 36;
+
+            for (let i = 0; i < totalLeaves; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'heart-leaf';
+                leaf.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 65;
+                const x = 80 + distance * Math.cos(angle);
+                const y = 70 + distance * Math.sin(angle);
+
+                leaf.style.left = `${x}px`;
+                leaf.style.top = `${y}px`;
+                leaf.style.animationDelay = `${(Math.random() * 2).toFixed(2)}s`;
+                container.appendChild(leaf);
+            }
+        }
+        renderTree();
+    </script>
 </body>
 </html>
